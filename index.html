@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Art Generator</title>
+  <style>
+    body { margin: 0; font-family: monospace; background: #111; color: #eee; display: flex; flex-direction: column; align-items: center; }
+    canvas { margin-top: 20px; border: 1px solid #333; }
+    input { margin-top: 20px; padding: 5px; font-size: 1rem; background: #222; color: #0f0; border: none; }
+  </style>
+</head>
+<body>
+
+  <input id="seedInput" type="text" placeholder="Enter a seed..." />
+  <canvas id="artCanvas" width="800" height="800"></canvas>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
