@@ -12,7 +12,7 @@ seedInput.addEventListener("input", () => {
 
 function startDrawing(seed) {
   clearInterval(intervalId);
-  document.getElementById("saveButton").style.display = "none"; // Hide save button
+  document.getElementById("saveButton").style.display = "none";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   animationState = createAnimationState(seed);
   drawNextStep();
@@ -29,11 +29,10 @@ function createAnimationState(seed) {
   off.height = TILE_SIZE;
   const offCtx = off.getContext("2d");
 
-  // Set a high contrast background and stroke color
-  offCtx.fillStyle = `hsl(${(baseHue + 180) % 360}, 30%, 10%)`;  // Dark background
+  offCtx.fillStyle = `hsl(${(baseHue + 180) % 360}, 30%, 10%)`;
   offCtx.fillRect(0, 0, TILE_SIZE, TILE_SIZE);
-  offCtx.strokeStyle = `hsl(${baseHue}, 100%, 70%)`;  // Line color (bright, visible)
-  offCtx.lineWidth = 4;  // Increased line width for better visibility
+  offCtx.strokeStyle = `hsl(${baseHue}, 100%, 70%)`; 
+  offCtx.lineWidth = 4;
   offCtx.beginPath();
   offCtx.moveTo(0, TILE_SIZE);
 
@@ -45,7 +44,7 @@ function createAnimationState(seed) {
     x: rng() * canvas.width,
     y: rng() * canvas.height,
 
-    hue: baseHue,  // Store the initial hue
+    hue: baseHue,  
     step: 0,
     maxSteps: 10000
   };
@@ -83,7 +82,6 @@ function renderTiles(original, baseHue) {
   console.log('Rendering tiles');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Drawing logic...
   ctx.drawImage(original, 0, 0);
   drawTransformed(original, TILE_SIZE, 0, ctx => {
     ctx.translate(TILE_SIZE, 0);
@@ -106,7 +104,6 @@ function renderTiles(original, baseHue) {
   ctx.fillRect(TILE_SIZE, TILE_SIZE, TILE_SIZE, TILE_SIZE);
   ctx.restore();
 
-  // ✅ Show the Save button
   document.getElementById("saveButton").style.display = "inline-block";
 }
 
@@ -119,7 +116,6 @@ function drawTransformed(image, x, y, transformFn) {
   ctx.restore();
 }
 
-// Initial draw
 startDrawing("default-seed");
 
 document.getElementById("saveButton").addEventListener("click", () => {
